@@ -14,14 +14,11 @@ public class User {
 
     @Id
     String id;
-    @NotEmpty @NonNull
     String firstName;
-    @NotEmpty @NonNull
     String lastName;
     @Email
     @NotEmpty @NonNull
     String email;
-    @JsonIgnore
     @NotEmpty @NonNull
     String password;
 

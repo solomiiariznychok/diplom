@@ -27,6 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         web.ignoring().antMatchers(HttpMethod.POST, "/api/user");
         web.ignoring().antMatchers(HttpMethod.POST, "/api/user/login");
+        web.ignoring().antMatchers(HttpMethod.POST, "/api/formula");
+        web.ignoring().antMatchers(HttpMethod.GET, "/api/formula/{id}");
 
     }
 

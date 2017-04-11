@@ -22,8 +22,9 @@ public class SecUserDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-
-        authorities.add(new SimpleGrantedAuthority(user.getRole().name()));
+        if(user.getRole() != null) {
+            authorities.add(new SimpleGrantedAuthority(user.getRole().name()));
+        }
         return authorities;
     }
 

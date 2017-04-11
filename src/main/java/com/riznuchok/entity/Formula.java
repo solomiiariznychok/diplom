@@ -4,11 +4,14 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 
 @Data
-public class Formula {
+public abstract class Formula {
 
     @Id
     String id;
-    private String formula;
+    private Double result;
     private User user;
+
+
+    public abstract Formula calculate();
 
 }
