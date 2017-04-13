@@ -1,7 +1,6 @@
 package com.riznuchok.configuration;
 
 import com.riznuchok.resources.FormulaResources;
-import com.riznuchok.resources.UserResources;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
 
