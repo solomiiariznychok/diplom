@@ -8,6 +8,5 @@ import org.springframework.context.annotation.Configuration;
 public class JerseyConfig extends ResourceConfig {
     public JerseyConfig() {
         register(FormulaResources.class);
-        register(UserResources.class);
     }
 }
