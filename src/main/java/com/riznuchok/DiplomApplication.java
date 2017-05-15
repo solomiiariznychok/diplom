@@ -6,11 +6,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
 
 import java.util.Arrays;
 
 @SpringBootApplication
-@EnableAutoConfiguration
+@EnableMongoAuditing
 public class DiplomApplication {
 
 	public static void main(String[] args) {

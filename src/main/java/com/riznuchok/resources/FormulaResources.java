@@ -5,17 +5,21 @@ import com.riznuchok.repository.FormulaRepository;
 import com.riznuchok.service.FormulaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @RestController
 @Path("/api/formula")
-@Produces("application/json")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 @PermitAll
 @Slf4j
+@CrossOrigin
 public class FormulaResources {
 
     @Autowired
