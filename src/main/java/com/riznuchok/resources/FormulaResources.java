@@ -1,6 +1,6 @@
 package com.riznuchok.resources;
 
-import com.riznuchok.entity.Formula1;
+import com.riznuchok.entity.Formula;
 import com.riznuchok.repository.FormulaRepository;
 import com.riznuchok.service.FormulaService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,18 +22,17 @@ import javax.ws.rs.core.Response;
 @CrossOrigin
 public class FormulaResources {
 
-    @Autowired
-    FormulaRepository formulaRepository;
 
     @Autowired
     FormulaService formulaService;
 
-    @POST
-    public Response calculate(Formula1 formula1){
-        log.info("formula " + formula1);
+    @Autowired
+    FormulaRepository formulaRepository;
 
-        formula1 = formulaRepository.save((Formula1) formula1.calculate());
-        return Response.ok(formula1).build();
+    @POST
+    public Response calculate(Formula formula){
+        log.info("formula: " + formula);
+        return Response.ok(formulaService.calculate(formula)).build();
     }
 
     @GET

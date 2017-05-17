@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.domain.Persistable;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -12,17 +11,17 @@ import java.util.Date;
 
 @Data
 @Document
-public abstract class Formula implements Serializable {
+public  class Formula extends BaseFormula implements Serializable {
 
-    @Id
-    String id;
-    private Double resultSimplePecent;
-    private User user;
-    @CreatedDate
-    @JsonFormat(pattern="dd-MM-yyyy HH:mm")
-    private Date createdDate;
+    private Double sum;
+    private Double percent;
+    private Integer yearCount;
 
+    private Double annualRate;
+    private Integer countYearPeriodm;
+    private Double countCalculatingn;
 
-    public abstract Formula calculate();
-
+    private Result resultByFirstFormula;
+    private Result ResultBySecondFormula;
+    protected Result ResultByThirdFormula;
 }
