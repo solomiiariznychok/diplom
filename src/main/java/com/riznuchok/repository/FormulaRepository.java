@@ -11,8 +11,8 @@ import java.util.List;
 public interface FormulaRepository extends MongoRepository<Formula, Integer> {
 
     Formula findById(String id);
-    List<Formula> findByUser(String userId);
-    List<Formula> findAll();
+    List<Formula> findByUserOrderByCreatedDate(String userId);
+    List<Formula> findAllOrOrderByCreatedDate();
 
 
 
