@@ -21,7 +21,14 @@ public  class Formula extends BaseFormula implements Serializable {
     private Integer countYearPeriodm;
     private Double countCalculatingn;
 
+    private Double percentWithVariableRate;
+    private Double normalPercentYears;
+
+  //  private  Double changePercent;
+
     private Result resultByFirstFormula;
     private Result ResultBySecondFormula;
     protected Result ResultByThirdFormula;
+    protected Result ResultByFourthFormula;
+    protected Result ResultFifthFormula;
 }

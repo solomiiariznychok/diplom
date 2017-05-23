@@ -43,7 +43,7 @@ public class FormulaResources {
 
     @GET
     public Response getAllFormualas(){
-        return Response.ok(formulaRepository.findAllOrOrderByCreatedDate()).build();
+        return Response.ok(formulaRepository.findAll()).build();
     }
 
 
