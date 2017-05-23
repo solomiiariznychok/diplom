@@ -23,9 +23,14 @@ public class FormulaService {
         if(formula.getAnnualRate() != null) {
             formula = this.calculateByThirdMethod(formula);
         }
+        if(formula.getPercentWithVariableRate() != null) {
+            formula = this.changedPercent(formula);
+            formula = this.changedPercent2(formula);
+        }
       // if(formula.getJ() != null){
 
        // }
+
         return formulaRepository.save(formula);
     }
 
@@ -72,11 +77,54 @@ public class FormulaService {
         Double result = 0.0;
         result = formula.getSum() * Math.pow(1 + formula.getAnnualRate()/formula.getCountYearPeriodm(),
                 formula.getCountCalculatingn() * formula.getCountYearPeriodm());
+        //TODO
         resultByThirdFormula.setYearSumList(yearSumList);
         resultByThirdFormula.setResult(result);
         formula.setResultByThirdFormula(resultByThirdFormula);
         return formula;
     }
+    public  Formula changedPercent(Formula formula){
+        Result resultByChangedPercent = new Result();
 
-    
+        List<Map<Integer, Double>> yearSumList = new ArrayList<>();
+        Double sum = formula.getSum();
+        Double result = 0.0;
+        Double percent = formula.getPercent();
+        Double percentSum = 0.0;
+        percentSum = formula.getNormalPercentYears() * (percent/100);
+        for(int i = 0; i < formula.getYearCount() - formula.getNormalPercentYears(); i++){
+            percent += formula.getPercentWithVariableRate();
+            percentSum += 1 * (percent/100);
+        }
+        result = formula.getSum() * (1 + percentSum);
+        resultByChangedPercent.setResult(result);
+        //TODO
+        resultByChangedPercent.setYearSumList(yearSumList);
+        formula.setResultByFourthFormula(resultByChangedPercent);
+        return formula;
+    }
+
+    public  Formula changedPercent2(Formula formula){
+        Result resultByChangedPercent2 = new Result();
+
+        List<Map<Integer, Double>> yearSumList = new ArrayList<>();
+        Double sum = formula.getSum();
+        Double result = 0.0;
+        Double percent = formula.getPercent();
+        Double percentSum = 0.0;
+
+        percentSum = Math.pow(1  + percent/100, formula.getNormalPercentYears());
+
+        for(int i = 0; i < formula.getYearCount() - formula.getNormalPercentYears(); i++){
+
+            percent += formula.getPercentWithVariableRate();
+            percentSum *= 1 + (percent/100);
+        }
+        result = formula.getSum() *   percentSum;
+        resultByChangedPercent2.setResult(result);
+        //TODO
+        resultByChangedPercent2.setYearSumList(yearSumList);
+        formula.setResultFifthFormula(resultByChangedPercent2);
+        return formula;
+    }
 }
