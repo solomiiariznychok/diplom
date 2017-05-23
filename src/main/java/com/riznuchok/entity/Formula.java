@@ -22,6 +22,6 @@ public  class Formula extends BaseFormula implements Serializable {
     private Double countCalculatingn;
 
     private Result resultByFirstFormula;
-    private Result ResultBySecondFormula;
-    protected Result ResultByThirdFormula;
+    private Result resultBySecondFormula;
+    protected Result resultByThirdFormula;
 }

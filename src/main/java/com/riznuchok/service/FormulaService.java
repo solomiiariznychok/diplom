@@ -20,7 +20,9 @@ public class FormulaService {
     public Formula calculate(Formula formula){
         formula = this.calculateByFirstMethod(formula);
         formula = this.calculateBySecondMethod(formula);
-        formula = this.calculateByThirdMethod(formula);
+        if(formula.getAnnualRate() != null) {
+            formula = this.calculateByThirdMethod(formula);
+        }
       // if(formula.getJ() != null){
 
        // }

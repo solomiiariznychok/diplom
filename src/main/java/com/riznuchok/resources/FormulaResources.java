@@ -5,6 +5,8 @@ import com.riznuchok.repository.FormulaRepository;
 import com.riznuchok.service.FormulaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +14,7 @@ import javax.annotation.security.PermitAll;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.Date;
 
 @RestController
 @Path("/api/formula")
@@ -42,8 +45,8 @@ public class FormulaResources {
     }
 
     @GET
-    public Response getAllFormualas(){
-        return Response.ok(formulaRepository.findAllOrOrderByCreatedDate()).build();
+    public Response getAllFormulas(){
+        return Response.ok(formulaRepository.findAll(new Sort(new Sort.Order(Sort.Direction.DESC, "createdDate")))).build();
     }
 
 
