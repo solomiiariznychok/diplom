@@ -13,7 +13,5 @@ public interface FormulaRepository extends MongoRepository<Formula, Integer> {
     Formula findById(String id);
     List<Formula> findByUserOrderByCreatedDate(String userId);
     List<Formula> findAll();
-
-
-
+    Formula deleteFormulaById(String id);
 }

@@ -29,7 +29,7 @@ public class FormulaResources {
     @Autowired
     FormulaRepository formulaRepository;
 
-    @POST
+   @POST
     public Response calculate(Formula formula){
         log.info("formula: " + formula);
         return Response.ok(formulaService.calculate(formula)).build();
@@ -42,11 +42,22 @@ public class FormulaResources {
     }
 
     @GET
+    @Path("{id: [a-zA-Z][a-zA-Z_0-9]}")
+    public Response getFById(@PathParam("id") String id) {
+
+        return Response.ok(formulaRepository.findById(id)).build();
+               // .entity("getUserByUserName is called, username : " + username).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    public Response deleteById(@PathParam("id") String id){
+        return Response.ok(formulaRepository.deleteFormulaById(id)).build();
+    }
+
+    @GET
     public Response getAllFormualas(){
         return Response.ok(formulaRepository.findAll()).build();
     }
-
-
-
 
 }
