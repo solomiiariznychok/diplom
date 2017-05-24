@@ -6,15 +6,15 @@ import com.riznuchok.service.FormulaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.security.PermitAll;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Date;
 
 @RestController
 @Path("/api/formula")
@@ -32,10 +32,10 @@ public class FormulaResources {
     @Autowired
     FormulaRepository formulaRepository;
 
-    @POST
+   @POST
     public Response calculate(Formula formula){
         log.info("formula: " + formula);
-        return Response.ok(formulaService.calculate(formula)).build();
+        return Response.ok(formulaService.createFormula(formula)).build();
     }
 
     @GET
@@ -49,7 +49,18 @@ public class FormulaResources {
         return Response.ok(formulaRepository.findAll(new Sort(new Sort.Order(Sort.Direction.DESC, "createdDate")))).build();
     }
 
+    @DELETE
+    @Path("{id}")
+    public Response deleteById(@PathParam("id") String id){
+        formulaRepository.deleteFormulaById(id);
+        return Response.ok().build();
+    }
 
+    @PUT
+    @Path("{id}")
+    public Response updateFormulaById(Formula formula, @PathParam(value = "id") String id){
+        return Response.ok(formulaService.updateFormula(id, formula)).build();
+    }
 
 
 }

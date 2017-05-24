@@ -55,4 +55,13 @@ dependencies {
 	compile 'io.swagger:swagger-jersey2-jaxrs:1.5.3'
 	compile("org.springframework.boot:spring-boot-devtools")
 //	compile("org.springframework.boot:spring-boot-starter-security")
+	// https://mvnrepository.com/artifact/org.testng/testng
+	compile group: 'org.testng', name: 'testng', version: '6.11'
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+	testCompile 'com.jayway.restassured:rest-assured:2.4.1'
+	compile 'com.tngtech.java:junit-dataprovider:1.11.0'
+	compile group: 'pl.pragmatists', name: 'JUnitParams', version: '1.0.4'
+	compile group: 'com.hynnet', name: 'sqljdbc4-chs', version: '4.0.2206.100'
+	compile group: 'com.google.code.gson', name: 'gson', version: '1.7.2'
+
 }
