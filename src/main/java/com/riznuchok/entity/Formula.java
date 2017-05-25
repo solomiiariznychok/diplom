@@ -18,17 +18,17 @@ public  class Formula extends BaseFormula implements Serializable {
     private Integer yearCount;
 
     private Double annualRate;
-    private Integer countYearPeriodm;
-    private Double countCalculatingn;
+    private Integer increasingPercentValueForYear;
+    private Double countOfCalculatingPeriod;
 
-    private Double percentWithVariableRate;
-    private Double normalPercentYears;
+    private Double changeablePercentRate;
+    private Double constantPercentRate;
 
   //  private  Double changePercent;
 
-    private Result resultByFirstFormula;
-    private Result ResultBySecondFormula;
-    protected Result ResultByThirdFormula;
-    protected Result ResultByFourthFormula;
-    protected Result ResultFifthFormula;
+    private Result resultBySimplePercent;
+    private Result resultByComplexPercent;
+    protected Result resultByFormulaWithAnnualRate;
+    protected Result resultByFormulaWithChangRateSimplePercent;
+    protected Result resultByFormulaWithChangRateComplexPercent;
 }
